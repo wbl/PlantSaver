@@ -16,5 +16,5 @@ koch = System (Symbol "F") (Map.fromList[(Symbol "F",
        (Map.fromList[(Symbol "F", Forward 5), (Symbol "R", TurnRight 90),
                                              (Symbol "L", TurnLeft 90)])
                                                      
-main = animate (InWindow "Nice Window" (1000, 1000) (100, 100)) white
-       (\x->(fractal (floor(x/2)) koch))
+main = animate (FullScreen (1000,1000)) white
+       (\x->(Translate (-500)  (200) (fractal (min (floor(x/2)) 5) koch)))
