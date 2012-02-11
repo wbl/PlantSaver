@@ -11,10 +11,10 @@ expand :: Rules->Symbol->[Symbol]
 expand m x=Map.findWithDefault [x] x m
 fractgen :: Rules->[Symbol]->[Symbol]
 fractgen m frac = (concat . map (\x-> expand m x)) frac
-iter :: Integer->(a->a)->(a->a)
+iter :: Int->(a->a)->(a->a)
 iter 0 f = (\x->x)
 iter n f = f . (iter (n-1) f)
-fractal ::Integer->System->Picture
+fractal ::Int->System->Picture
 fractal n (System start rule vals) = interp (map (\x->vals Map.! x)
                                                      ((iter n
                                                                     (fractgen rule))

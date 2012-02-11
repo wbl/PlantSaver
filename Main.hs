@@ -52,7 +52,7 @@ gosper = System (Symbol "FL") (Map.fromList[
                                                  (Symbol "-", TurnLeft 60),
                                                  (Symbol "+", TurnRight 60)])
                                                          
-fractfuncs = [ (\x->(Translate (-500)  (200)
-                                   (fractal (min (floor(x/2)) 5) koch))),
-               (\x->(fractal (min (floor(x/2)) 6) gosper))] 
-main = animate (FullScreen (1000,1000)) white (fractfuncs !! 1)
+fractfuncs = [ (\x->(Color red (Translate (-500)  (200)
+                                   (fractal (mod (floor(x/2))  6) koch)))),
+               (\x->(Color blue (fractal (mod (floor (x/2)) 6) gosper)))]
+main = animate (FullScreen (1000,1000)) black (\x->(fractfuncs !! (mod (floor(x/12)) (length fractfuncs))) x)
